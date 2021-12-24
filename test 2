@@ -1,0 +1,29 @@
+#!/bin/bash
+export TRY_INTERVAL=5
+export TRY_NUMBER=12
+TRY_COMMAND="please_enter_an_appropriate_command"
+export TRY_COMMAND
+read -p "i: " INTERVAL ; read -p "n: " NUMBER ; read -p "command: " COMMAND
+echo try '-i'$INTERVAL '-n'$NUMBER "COMMAND"
+y=$INTERVAL
+x=$NUMBER
+COMMAND=$COMMAND
+echo $x $y $COMMAND
+if [ $y ==  ]; then
+  y=$TRY_INTERVAL
+fi
+if [ $x ==  ]; then
+  x=$TRY_NUMBER
+fi
+if [ $COMMAND -eq   ]; then
+  COMMAND=$TRY_COMMAND
+fi
+for (( n=1 ; n<=x ; ++n )); do
+  $COMMAND
+  if [[ $? -eq 0 ]]; then    exit 0
+  else
+  sleep $y
+  fi
+done
+exit 1
+
