@@ -1,0 +1,23 @@
+#!/bin/bash
+  
+read -p "i: " INTERVAL ; read -p "n: " NUMBER ; read -p "command: " COMMAND
+echo try '-i'$INTERVAL '-n'$NUMBER "COMMAND"
+y=$INTERVAL
+x=$NUMBER
+COMMAND=$COMMAND
+echo $x $y $COMMAND
+for (( n=1 ; n<=x ; ++n )); do
+  $COMMAND
+  if [[ $? -eq 0 ]]; then
+    exit 0
+  else
+  sleep $y
+  fi
+
+
+
+
+
+
+
+done
